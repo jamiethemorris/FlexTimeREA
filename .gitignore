@@ -1,0 +1,14 @@
+/runtime/
+/build/
+__pycache__/
+*.py[cod]
+.DS_Store
+*.dSYM/
+*.wav
+*.f32
+*.dylib
+*.so
+*.dll
+*.log
+.env
+.env.*
