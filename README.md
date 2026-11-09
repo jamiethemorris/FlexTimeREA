@@ -91,11 +91,43 @@ Tests synthesize all audio locally. Test receipts are not reference music or
 proof of perceptual quality. Keep native-execution requirements distinct from
 compile-only/configuration checks.
 
+## Saved-project stretch-marker action (Logic 13)
+
+The separate source-only [marker-render action](marker-render/README.md) targets
+**Logic Pro 13.0 (7801), ARM64** with its own three framework pins, native build
+and analysis lifecycle. It does not use the root Logic 12.4 executable or change
+the standalone limits above. Keep those version-specific adapters separate.
+
+The action renders a selected original WAV through one continuous Polyphonic
+engine and publishes exclusively into the saved project's `Audio` directory,
+then adds a rate-1 take. Positive nonunity base rates and maps within 0.25–4
+local duration ratios are admitted without an arbitrary duration/MiB cap;
+RIFF32, map/integer, estimated-memory and disk bounds still apply. Signed take
+gain/pan, online ordinary take FX and ordinary Volume/Pan/FX envelope points
+remain editable copies, not baked audio. Every original take is admitted before
+rendering; offline FX, Pitch/Mute envelopes, containers and complex automation/
+modulation refuse explicitly.
+
+Narrow REAPER 7.84 action/copy gates passed at rates .5 and 2, and a separate
+two-original-take native rollback gate used a retained verified WAV without DSP.
+This is not general FX certification, realtime support, hard RSS enforcement or
+responsive UI/cancellation: the helper wait is synchronous. See the action's
+README for exact coverage, earlier failed attempts, portable tests and a focused
+real-helper integration command. No vendor binaries, generated media, user
+projects or private receipts belong in this publication.
+
 ## REAPER boundary
 
-The separate reusable ExtraShifter provider experiment is planned for
-<https://github.com/jamiethemorris/reaper-extrashifter>. It demonstrates an
-**undocumented reserved loading hook** and a unity-only adapter, not a completed
-Polyphonic engine integration. This repository does not import or install that
-provider, modify a REAPER bundle, launch a DAW, or implement the future engine
-integration. See `LICENSING.md` before reuse or publication.
+The separate source-only [reaper-extrashifter](https://github.com/jamiethemorris/reaper-extrashifter)
+experiment documents an **undocumented reserved loading hook**. Its root unity
+demo remains independent; the [Polyphonic companion](https://github.com/jamiethemorris/reaper-extrashifter/tree/main/poly)
+contains the accepted bounded offline integration for separately installed Logic
+Pro 12.4 ARM64 and observed REAPER 7.84. Acceptance covers 23 item renders
+(21 native-exact nonunity, two input-exact unity/provider-bypass cases), not
+blanket Logic parity. Eleven strict silence diagnostics remain failed measurements.
+Unsupported settings can crash the host; realtime/concurrency and normal-use
+safety are not established, and private analysis files are retained. See the
+companion's admission limits, fresh build/tests and manual-use precautions.
+This repository's standalone wrapper is unchanged: it does not import/install
+that provider, modify a REAPER bundle or launch a DAW. See `LICENSING.md` before
+reuse or publication.

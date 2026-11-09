@@ -12,3 +12,12 @@ __pycache__/
 *.log
 .env
 .env.*
+
+# Marker-render: local binaries, private path-bearing receipts and generated media.
+/marker-render/build*/
+/marker-render/runs/
+/marker-render/evidence/
+/marker-render/tests/Audio/
+/marker-render/tests/fixture.wav
+/marker-render/tests/fixture.rpp
+/marker-render/tests/fixture.rpp-bak
